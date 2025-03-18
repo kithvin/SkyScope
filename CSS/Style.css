@@ -1,90 +1,114 @@
-body{
-        font-family: Arial, sans-serif;
-        background-color: hsl(0, 0%, 95%);
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .weatherForm{
-        margin: 20px;
-    }
-    
-    .cityInput{
-        padding: 10px;
-        font-size: 2rem;
-        font-weight: bold;
-        border: 2px solid hsla(0, 0%, 20%, 0.3);
-        border-radius: 10px;
-        margin: 10px;
-        width: 300px;
-    }
-    
-    button[type="submit"]{
-        padding: 10px 20px;
-        font-weight: bold;
-        font-size: 2rem;
-        background-color: hsla(122,39%, 50%);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    button[type="submit"]:hover{
-        background-color: hsla(122,39%, 40%);
-    }
-    
-    .card{
-        background: linear-gradient(180deg,hsl(210, 100%, 75%),hsl(40, 100%, 75%));
-        padding: 50px;
-        box-shadow: 2px 2px 5px hsla(0,0%,0%,0.5);
-        min-width: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    h1{
-        font-size: 3.5rem;
-        margin-top: 0;
-        margin-bottom: 25px;
-    }
-    
-    p{
-        font-size: 1.5rem;
-        margin: 5px 0;
-    }
-    
-    .cityDisplay, .tempDisplay{
-        font-size: 3.5rem;
-        font-weight: bold;
-        color: hsla(0, 0%, 0%,0.75);
-        margin-bottom: 25px;
-    }
-    
-    .humidityDisplay{
-        font-weight: bold;
-        margin-bottom: 25px;
-    }
-    
-    .descDisplay{
-        font-style: italic;
-        font-weight: bold;
-        font-size: 2rem;
-    }
-    
-    .weatherEmoji{
-        margin: 0;
-        font-size: 7.5rem;
-    }
-    
-    .errorDisplay{
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: hsla(0, 0%, 0%, 0.75);
-    }
-        
-        
-        
+/* Global Styles */
+body {
+    /* Set the font family and background color for the entire page */
+    font-family: Arial, sans-serif;
+    background-color: hsl(0, 0%, 95%);
+    margin: 0;
+    /* Use flexbox to center content vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form Container Styles */
+.weatherForm {
+    /* Add margin around the form */
+    margin: 20px;
+}
+
+/* Input Field Styles */
+.cityInput {
+    /* Style the input field for city name */
+    padding: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 2px solid hsla(0, 0%, 20%, 0.3);
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Submit Button Styles */
+button[type="submit"] {
+    /* Style the submit button */
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: hsla(122,39%, 50%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Submit Button Hover Effect */
+button[type="submit"]:hover {
+    /* Change background color on hover */
+    background-color: hsla(122,39%, 40%);
+}
+
+/* Weather Card Styles */
+.card {
+    /* Style the card that displays weather information */
+    background: linear-gradient(180deg,hsl(210, 100%, 75%),hsl(40, 100%, 75%));
+    padding: 50px;
+    box-shadow: 2px 2px 5px hsla(0,0%,0%,0.5);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Heading Styles */
+h1 {
+    /* Style headings */
+    font-size: 3.5rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+/* Paragraph Styles */
+p {
+    /* Style paragraphs */
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+/* City and Temperature Display Styles */
+.cityDisplay, .tempDisplay {
+    /* Style city and temperature displays */
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: hsla(0, 0%, 0%,0.75);
+    margin-bottom: 25px;
+}
+
+/* Humidity Display Styles */
+.humidityDisplay {
+    /* Style humidity display */
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Weather Description Styles */
+.descDisplay {
+    /* Style weather description */
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+/* Weather Emoji Styles */
+.weatherEmoji {
+    /* Style weather emoji */
+    margin: 0;
+    font-size: 7.5rem;
+}
+
+/* Error Message Styles */
+.errorDisplay {
+    /* Style error messages */
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: hsla(0, 0%, 0%, 0.75);
+}
