@@ -5,9 +5,13 @@ SkyScope is a modern, lightweight weather application that provides real-time we
 ✨ Features 
 
 ✅ 🌍 City Search – Get real-time weather updates by entering any city name.
+
 ✅ 🌡 Temperature Display – Shows the current temperature in Celsius (°C).
+
 ✅ 💧 Humidity – Displays live humidity details.
+
 ✅ 🌦 Weather Conditions – Provides a description of the weather (clear, cloudy, rainy, etc.) with corresponding emojis.
+
 ✅ 📱 Fully Responsive – Designed to work seamlessly across all screen sizes.
 
 🛠️ Tech Stack
@@ -41,7 +45,8 @@ cd SkyScope
 
 🎯 Usage
 
-1.	Enter a city name in the search bar.
-   
-2.	Click Get Weather to fetch the latest weather details.
+•	Enter a city name in the search bar.
+
+•	Click Get Weather to fetch the latest weather details.
+
 
