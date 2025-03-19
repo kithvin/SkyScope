@@ -1,114 +1,111 @@
-// Select DOM elements for the weather form, city input, and card container
+// Select DOM elements
 const weatherForm = document.querySelector(".weatherForm");
 const cityInput = document.querySelector(".cityInput");
 const card = document.querySelector(".card");
 
-// API key for fetching weather data (Replace with your actual API key)
+// API key for fetching weather data
 const apikey = "9c4c35b5216a2c378d57112c8af7b6ee";
 
 // Event listener for form submission
-weatherForm.addEventListener("submit", async event => {
-  event.preventDefault(); // Prevents the form from refreshing the page
+weatherForm.addEventListener("submit", async (event) => {
+  event.preventDefault(); // Prevent page refresh on form submission
 
-  const city = cityInput.value; // Get the city name entered by the user
+  const city = cityInput.value.trim(); // Get user input and remove extra spaces
 
-  // If the city input is not empty, proceed to fetch weather data
   if (city) {
     try {
-      const weatherData = await getWeatherData(city); // Fetch weather data
-      displayWeatherInfo(weatherData); // Display weather info on successful fetch
+      const weatherData = await getWeatherData(city);
+      displayWeatherInfo(weatherData);
     } catch (error) {
-      console.error(error); // Log any errors
-      displayError(error); // Display the error message to the user
+      console.error(error);
+      displayError("Could not fetch weather data. Please try again.");
     }
   } else {
-    displayError("Please Enter a City"); // Show an error if no city is entered
+    displayError("Please enter a city.");
   }
 });
 
-// Function to fetch weather data based on the city name
+// Function to fetch weather data from OpenWeather API
 async function getWeatherData(city) {
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`;
+  const response = await fetch(apiUrl);
 
-    // Construct the API URL using the city and API key
-
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
-
-    // Fetch the data from the API
-
-    const response = await fetch(apiUrl);
-
-    // If the response is not OK (there was an error), throw an error
-
-    if(!response.ok){
-
-        throw new Error("Could not fetch weather data");
-    }
-
-    // Return the data in JSON format
-
-        return await response.json();
+  if (!response.ok) {
+    throw new Error("Failed to fetch weather data");
+  }
+  return await response.json();
 }
 
-// Function to display the weather information on the page
-
+// Function to display the fetched weather information
 function displayWeatherInfo(data) {
+  const {
+    name: city,
+    main: { temp, humidity },
+    weather: [{ description, id }],
+  } = data;
 
-    // Destructure the weather data for easy access
+  card.textContent = ""; // Clear previous content
+  card.style.display = "flex";
 
-    const {name: city, 
-        main: {temp, humidity}, 
-        weather: [{description, id}]} = data;
-  
-    // Clear any previous weather data and display the card
-    card.textContent = "";
-    card.style.display = "flex";
+  // Create elements for displaying weather information
+  const cityDisplay = document.createElement("h1");
+  const tempDisplay = document.createElement("p");
+  const humidityDisplay = document.createElement("p");
+  const descDisplay = document.createElement("p");
+  const weatherEmoji = document.createElement("p");
 
-    // Create elements to display the weather data
-    const cityDisplay =  document.createElement("h1");
-    const tempDisplay =  document.createElement("p");
-    const humidityDisplay =  document.createElement("p");
-    const descDisplay =  document.createElement("p");
-    const weatherEmoji =  document.createElement("p");
-    
-    // Set the text content for the elements
-    cityDisplay.textContent = city;
-    tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`; // Convert temperature from Kelvin to Celsius
-    humidityDisplay.textContent = `Humidity: ${humidity}%`;
-    descDisplay.textContent = description;
-    weatherEmoji.textContent = getWeatherEmoji(id); // Call the function to get the emoji
-    
-    // Add CSS classes for styling the elements
-    cityDisplay.classList.add("cityDisplay");
-    tempDisplay.classList.add("tempDisplay");
-    humidityDisplay.classList.add("humidityDisplay");
-    descDisplay.classList.add("descDisplay");
-    weatherEmoji.classList.add("weatherEmoji");
-    
-    // Append the elements to the card container
-    card.appendChild(cityDisplay);
-    card.appendChild(tempDisplay);
-    card.appendChild(humidityDisplay);
-    card.appendChild(descDisplay);
-    card.appendChild(weatherEmoji);
+  // Set text content with appropriate formatting
+  cityDisplay.textContent = city;
+  tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`; // Convert Kelvin to Celsius
+  humidityDisplay.textContent = `Humidity: ${humidity}%`;
+  descDisplay.textContent = description;
+  weatherEmoji.textContent = getWeatherEmoji(id);
 
+  // Add CSS classes for styling
+  cityDisplay.classList.add("cityDisplay");
+  tempDisplay.classList.add("tempDisplay");
+  humidityDisplay.classList.add("humidityDisplay");
+  descDisplay.classList.add("descDisplay");
+  weatherEmoji.classList.add("weatherEmoji");
+
+  // Append elements to the card container
+  card.appendChild(cityDisplay);
+  card.appendChild(tempDisplay);
+  card.appendChild(humidityDisplay);
+  card.appendChild(descDisplay);
+  card.appendChild(weatherEmoji);
 }
 
-// Function to return an emoji based on the weather condition ID
+// Function to return a weather emoji based on weather condition ID
 function getWeatherEmoji(weatherId) {
-
-
-  
+  switch (true) {
+    case weatherId >= 200 && weatherId < 300:
+      return "⛈️"; // Thunderstorm
+    case weatherId >= 300 && weatherId < 400:
+      return "🌦️"; // Drizzle
+    case weatherId >= 500 && weatherId < 600:
+      return "🌧️"; // Rain
+    case weatherId >= 600 && weatherId < 700:
+      return "❄️"; // Snow
+    case weatherId >= 700 && weatherId < 800:
+      return "🌫️"; // Atmosphere (fog, mist, etc.)
+    case weatherId === 800:
+      return "☀️"; // Clear sky
+    case weatherId >= 801 && weatherId < 810:
+      return "☁️"; // Clouds
+    default:
+      return "❓"; // Unknown weather condition
+  }
 }
 
-// Function to display error messages in the card container
+// Function to display error messages
 function displayError(message) {
-  // Create a paragraph element to display the error message
-  const errorDisplay = document.createElement("p");
-  errorDisplay.textContent = message; // Set the error message text
-  errorDisplay.classList.add("errorDisplay"); // Apply CSS styling for error display
+  card.textContent = ""; // Clear previous content
+  card.style.display = "flex";
 
-  // Clear any previous content in the card container and make it visible
-  card.textContent = "";
-  card.style.display = "flex"; // Ensure the card is visible to show the error
-  card.appendChild(errorDisplay); // Append the error message to the card container
+  const errorDisplay = document.createElement("p");
+  errorDisplay.textContent = message;
+  errorDisplay.classList.add("errorDisplay");
+
+  card.appendChild(errorDisplay);
 }
