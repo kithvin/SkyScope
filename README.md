@@ -18,22 +18,30 @@ SkyScope is a modern, lightweight weather application that provides real-time we
 🚀 How to Run SkyScope
 
 1️⃣ Clone the Repository
-git clone https://github.com/github-kithvin/SkyScope.git  
+
+git clone https://github.com/github-kithvin/SkyScope.git
+
 cd SkyScope  
 
 2️⃣ Get an OpenWeatherMap API Key
+
 •	Create an account on OpenWeatherMap
+
 •	Generate an API key
 
 3️⃣ Update API Key in JavaScript
+
 •	Open JS/main.js
+
 •	Replace new apikey 
 
 4️⃣ Run the App
+
 •	Open index.html file
 
 🎯 Usage
 
 1.	Enter a city name in the search bar.
+   
 2.	Click Get Weather to fetch the latest weather details.
 
