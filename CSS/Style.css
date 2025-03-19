@@ -1,10 +1,9 @@
 /* Global Styles */
 body {
-    /* Set the font family and background color for the entire page */
     font-family: Arial, sans-serif;
+    background: url('../IMG/weather\ img.jpg') no-repeat center center fixed;
     background-color: hsl(0, 0%, 95%);
     margin: 0;
-    /* Use flexbox to center content vertically */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,13 +11,11 @@ body {
 
 /* Form Container Styles */
 .weatherForm {
-    /* Add margin around the form */
     margin: 20px;
 }
 
 /* Input Field Styles */
 .cityInput {
-    /* Style the input field for city name */
     padding: 10px;
     font-size: 2rem;
     font-weight: bold;
@@ -30,7 +27,6 @@ body {
 
 /* Submit Button Styles */
 button[type="submit"] {
-    /* Style the submit button */
     padding: 10px 20px;
     font-weight: bold;
     font-size: 2rem;
@@ -43,13 +39,11 @@ button[type="submit"] {
 
 /* Submit Button Hover Effect */
 button[type="submit"]:hover {
-    /* Change background color on hover */
     background-color: hsla(122,39%, 40%);
 }
 
 /* Weather Card Styles */
 .card {
-    /* Style the card that displays weather information */
     background: linear-gradient(180deg,hsl(210, 100%, 75%),hsl(40, 100%, 75%));
     padding: 50px;
     border-radius: 10px;
@@ -62,7 +56,6 @@ button[type="submit"]:hover {
 
 /* Heading Styles */
 h1 {
-    /* Style headings */
     font-size: 3.5rem;
     margin-top: 0;
     margin-bottom: 25px;
@@ -70,14 +63,12 @@ h1 {
 
 /* Paragraph Styles */
 p {
-    /* Style paragraphs */
     font-size: 1.5rem;
     margin: 5px 0;
 }
 
 /* City and Temperature Display Styles */
 .cityDisplay, .tempDisplay {
-    /* Style city and temperature displays */
     font-size: 3.5rem;
     font-weight: bold;
     color: hsla(0, 0%, 0%,0.75);
@@ -86,14 +77,12 @@ p {
 
 /* Humidity Display Styles */
 .humidityDisplay {
-    /* Style humidity display */
     font-weight: bold;
     margin-bottom: 25px;
 }
 
 /* Weather Description Styles */
 .descDisplay {
-    /* Style weather description */
     font-style: italic;
     font-weight: bold;
     font-size: 2rem;
@@ -101,14 +90,12 @@ p {
 
 /* Weather Emoji Styles */
 .weatherEmoji {
-    /* Style weather emoji */
     margin: 0;
     font-size: 7.5rem;
 }
 
 /* Error Message Styles */
 .errorDisplay {
-    /* Style error messages */
     font-size: 2.5rem;
     font-weight: bold;
     color: hsla(0, 0%, 0%, 0.75);

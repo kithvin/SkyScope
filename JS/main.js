@@ -29,27 +29,75 @@ weatherForm.addEventListener("submit", async event => {
 // Function to fetch weather data based on the city name
 async function getWeatherData(city) {
 
+    // Construct the API URL using the city and API key
+
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
 
+    // Fetch the data from the API
+
     const response = await fetch(apiUrl);
+
+    // If the response is not OK (there was an error), throw an error
 
     if(!response.ok){
 
         throw new Error("Could not fetch weather data");
     }
+
+    // Return the data in JSON format
+
         return await response.json();
 }
 
 // Function to display the weather information on the page
+
 function displayWeatherInfo(data) {
-  // Process and display the weather data here
-  // This function should update the UI with relevant weather details
+
+    // Destructure the weather data for easy access
+
+    const {name: city, 
+        main: {temp, humidity}, 
+        weather: [{description, id}]} = data;
+  
+    // Clear any previous weather data and display the card
+    card.textContent = "";
+    card.style.display = "flex";
+
+    // Create elements to display the weather data
+    const cityDisplay =  document.createElement("h1");
+    const tempDisplay =  document.createElement("p");
+    const humidityDisplay =  document.createElement("p");
+    const descDisplay =  document.createElement("p");
+    const weatherEmoji =  document.createElement("p");
+    
+    // Set the text content for the elements
+    cityDisplay.textContent = city;
+    tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`; // Convert temperature from Kelvin to Celsius
+    humidityDisplay.textContent = `Humidity: ${humidity}%`;
+    descDisplay.textContent = description;
+    weatherEmoji.textContent = getWeatherEmoji(id); // Call the function to get the emoji
+    
+    // Add CSS classes for styling the elements
+    cityDisplay.classList.add("cityDisplay");
+    tempDisplay.classList.add("tempDisplay");
+    humidityDisplay.classList.add("humidityDisplay");
+    descDisplay.classList.add("descDisplay");
+    weatherEmoji.classList.add("weatherEmoji");
+    
+    // Append the elements to the card container
+    card.appendChild(cityDisplay);
+    card.appendChild(tempDisplay);
+    card.appendChild(humidityDisplay);
+    card.appendChild(descDisplay);
+    card.appendChild(weatherEmoji);
+
 }
 
 // Function to return an emoji based on the weather condition ID
 function getWeatherEmoji(weatherId) {
-  // Implement logic to return an appropriate weather-related emoji
-  // based on the weather condition ID provided in the API response
+
+
+  
 }
 
 // Function to display error messages in the card container

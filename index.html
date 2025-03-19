@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="UTF-8" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title of the webpage -->
     <title>SkyScope</title>
 
-    <!-- Link to external CSS file -->
+    <!-- Link to external CSS file for styling the page -->
     <link rel="stylesheet" href="CSS/Style.css" />
   </head>
   <body>
     <!-- Weather Form Section -->
     <form class="weatherForm">
-      <!-- Input field for entering city name -->
+      <!-- Input field for entering city name. Placeholder text displayed when the field is empty -->
       <input type="text" class="cityInput" placeholder="Enter City" />
-      <!-- Submit button to fetch weather data -->
+      <!-- Submit button to fetch weather data upon clicking -->
       <button type="submit">Get Weather</button>
     </form>
+
     <!-- Weather Display Card -->
     <div class="card" style="display: none">
-      <!-- Link to external JS file -->
+      <!-- Link to external JavaScript file that will handle the logic for fetching and displaying weather data -->
       <script src="JS/main.js"></script>
     </div>
   </body>
