@@ -49,4 +49,8 @@ cd SkyScope
 
 •	Click Get Weather to fetch the latest weather details.
 
+🌐 Deployment
+
+• The project is live and accessible at: (https://sky-scope-omega.vercel.app/) 
+
 
